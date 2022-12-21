@@ -26,6 +26,12 @@ class MyHomePage extends StatelessWidget {
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
         title: const Text('Flutter App'),
       ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: const [
