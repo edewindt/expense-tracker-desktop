@@ -15,7 +15,7 @@ class PersonalExpenses extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.blueGrey,
         accentColor: Colors.amber,
       ),
       home: MyHomePage(),
@@ -77,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         actions: [
           IconButton(
               onPressed: () => startNewTransaction(context),
@@ -94,17 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Chart(_recentTransactions),
-            SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                elevation: 5,
-                child: Text(
-                  'Chart!',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
             TransactionList(transactions),
           ],
         ),
