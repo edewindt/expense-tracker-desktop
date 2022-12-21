@@ -45,10 +45,19 @@ class MyHomePage extends StatelessWidget {
           ),
           Card(
             elevation: 3,
-            child: Column(children: [
-              TextField(decoration: InputDecoration(labelText: 'Title')),
-              TextField(decoration: InputDecoration(labelText: 'Amount')),
-            ]),
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  TextField(decoration: InputDecoration(labelText: 'Title')),
+                  TextField(decoration: InputDecoration(labelText: 'Amount')),
+                  Container(
+                      margin: EdgeInsets.only(top: 25),
+                      child: TextButton(
+                          onPressed: (() {}), child: Text('Add Transaction')))
+                ],
+              ),
+            ),
           ),
           Column(
             children: [
@@ -57,12 +66,12 @@ class MyHomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(20),
+                        margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         child: Text(
                           '\$${transaction.amount}',
                           textAlign: TextAlign.center,
