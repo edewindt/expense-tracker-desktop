@@ -36,7 +36,9 @@ class _UserTransactionsState extends State<UserTransactions> {
     return Column(
       children: [
         NewTransaction(addTransaction),
-        TransactionList(transactions),
+        Container(
+            height: 600,
+            child: SingleChildScrollView(child: TransactionList(transactions))),
       ],
     );
   }
