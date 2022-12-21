@@ -7,10 +7,11 @@ class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        for (Transaction transaction in transactions)
-          Card(
+    return Container(
+      height: 500,
+      child: ListView.builder(
+        itemBuilder: (ctx, i) {
+          return Card(
             child: Row(
               children: [
                 Container(
@@ -20,7 +21,7 @@ class TransactionList extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    '\$${transaction.amount}',
+                    '\$${transactions[i].amount}',
                     textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.white, fontSize: 17),
                   ),
@@ -29,16 +30,18 @@ class TransactionList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      transaction.title,
+                      transactions[i].title,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(DateFormat().add_MMMEd().format(transaction.date))
+                    Text(DateFormat().add_MMMEd().format(transactions[i].date))
                   ],
                 )
               ],
             ),
-          )
-      ],
+          );
+        },
+        itemCount: transactions.length,
+      ),
     );
   }
 }
