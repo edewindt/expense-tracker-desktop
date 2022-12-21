@@ -10,9 +10,10 @@ class PersonalExpenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
+      title: 'Personal Expenses',
+      theme: ThemeData(primarySwatch: Colors.cyan, accentColor: Colors.amber),
       home: MyHomePage(),
     );
   }
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () => startNewTransaction(context),
               icon: Icon(Icons.add))
         ],
-        title: const Text('Flutter App'),
+        title: const Text('Personal Expenses'),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
@@ -82,9 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: double.infinity,
               child: Card(
-                color: Colors.blue,
+                color: Theme.of(context).primaryColor,
                 elevation: 5,
-                child: Text('Chart!'),
+                child: Text(
+                  'Chart!',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             TransactionList(transactions),

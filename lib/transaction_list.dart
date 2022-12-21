@@ -16,14 +16,14 @@ class TransactionList extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                      color: Colors.black,
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColorDark,
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     '\$${transactions[i].amount.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 17),
+                    style: TextStyle(color: Colors.white, fontSize: 17),
                   ),
                 ),
                 Column(
