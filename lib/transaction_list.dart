@@ -21,7 +21,7 @@ class TransactionList extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(10))),
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    '\$${transactions[i].amount}',
+                    '\$${transactions[i].amount.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
                     style: const TextStyle(color: Colors.white, fontSize: 17),
                   ),

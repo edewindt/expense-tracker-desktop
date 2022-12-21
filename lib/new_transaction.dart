@@ -8,6 +8,10 @@ class NewTransaction extends StatelessWidget {
   void submit() {
     final enteredtitle = titleController.text;
     final enteredamount = double.parse(amountController.text);
+
+    if (enteredtitle.isEmpty || enteredamount <= 0) {
+      return;
+    }
     add(titleController.text, double.parse(amountController.text));
   }
 
@@ -22,13 +26,13 @@ class NewTransaction extends StatelessWidget {
             TextField(
               decoration: const InputDecoration(labelText: 'Title'),
               controller: titleController,
-              onSubmitted: (_) => submit,
+              onSubmitted: (_) => submit(),
             ),
             TextField(
               decoration: const InputDecoration(labelText: 'Amount'),
               controller: amountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submit,
+              onSubmitted: (_) => submit(),
             ),
             Container(
                 margin: const EdgeInsets.only(top: 25),
