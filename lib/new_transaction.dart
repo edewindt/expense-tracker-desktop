@@ -14,11 +14,11 @@ class NewTransaction extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              decoration: InputDecoration(labelText: 'Title'),
+              decoration: const InputDecoration(labelText: 'Title'),
               controller: titleController,
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
+              decoration: const InputDecoration(labelText: 'Amount'),
               controller: amountController,
             ),
             Container(

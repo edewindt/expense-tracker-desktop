@@ -3,8 +3,6 @@ import './transaction_list.dart';
 import './new_transaction.dart';
 import './transactions.dart';
 
-import 'package:flutter/material.dart';
-
 class UserTransactions extends StatefulWidget {
   const UserTransactions({super.key});
 

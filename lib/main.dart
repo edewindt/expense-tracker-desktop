@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:personal_exp/user_transaction.dart';
-import './transactions.dart';
 
 void main() => runApp(const PersonalExpenses());
 
@@ -9,7 +8,7 @@ class PersonalExpenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Flutter App',
       home: MyHomePage(),
     );
@@ -17,7 +16,7 @@ class PersonalExpenses extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +24,20 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter App'),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              elevation: 5,
-              child: Text('Chart!'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                color: Colors.blue,
+                elevation: 5,
+                child: Text('Chart!'),
+              ),
             ),
-          ),
-          UserTransactions(),
-        ],
+            UserTransactions(),
+          ],
+        ),
       ),
     );
   }
