@@ -25,6 +25,9 @@ class MyHomePage extends StatelessWidget {
     Transaction(
         id: 't3', amount: 188669.99, date: DateTime.now(), title: 'New House')
   ];
+  late String titleInput;
+  late String amountInput;
+
   MyHomePage({super.key});
 
   @override
@@ -46,15 +49,28 @@ class MyHomePage extends StatelessWidget {
           Card(
             elevation: 3,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
-                  TextField(decoration: InputDecoration(labelText: 'Title')),
-                  TextField(decoration: InputDecoration(labelText: 'Amount')),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                    onChanged: ((value) {
+                      titleInput = value;
+                    }),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                    onChanged: (value) {
+                      amountInput = value;
+                    },
+                  ),
                   Container(
-                      margin: EdgeInsets.only(top: 25),
+                      margin: const EdgeInsets.only(top: 25),
                       child: TextButton(
-                          onPressed: (() {}), child: Text('Add Transaction')))
+                          onPressed: (() {
+                            print('$titleInput, $amountInput');
+                          }),
+                          child: const Text('Add Transaction')))
                 ],
               ),
             ),
@@ -66,16 +82,17 @@ class MyHomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
+                        margin: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
                             color: Colors.black,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Text(
                           '\$${transaction.amount}',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 17),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 17),
                         ),
                       ),
                       Column(
@@ -83,7 +100,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             transaction.title,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Text(
                               DateFormat().add_MMMEd().format(transaction.date))
