@@ -49,8 +49,17 @@ class MyHomePage extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
+                        margin: EdgeInsets.all(25),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          color: Colors.black,
+                          width: 2,
+                        )),
+                        padding: EdgeInsets.all(20),
+                        width: 110,
                         child: Text(
                           transaction.amount.toString(),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       Column(
