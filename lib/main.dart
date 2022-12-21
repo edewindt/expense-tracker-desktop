@@ -43,6 +43,13 @@ class MyHomePage extends StatelessWidget {
               child: Text('Chart!'),
             ),
           ),
+          Card(
+            elevation: 3,
+            child: Column(children: [
+              TextField(decoration: InputDecoration(labelText: 'Title')),
+              TextField(decoration: InputDecoration(labelText: 'Amount')),
+            ]),
+          ),
           Column(
             children: [
               for (Transaction transaction in transactions)
@@ -59,7 +66,7 @@ class MyHomePage extends StatelessWidget {
                         child: Text(
                           '\$${transaction.amount}',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.white, fontSize: 17),
                         ),
                       ),
                       Column(
@@ -69,7 +76,8 @@ class MyHomePage extends StatelessWidget {
                             transaction.title,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(DateFormat().format(transaction.date))
+                          Text(
+                              DateFormat().add_MMMEd().format(transaction.date))
                         ],
                       )
                     ],
