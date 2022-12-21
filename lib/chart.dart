@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personal_exp/bar.dart';
 import 'package:personal_exp/transactions.dart';
 
 class Chart extends StatelessWidget {
@@ -25,6 +26,12 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get maxSpending {
+    return groupedTransactions.fold(0.0, (sum, item) {
+      return sum + (item['amount'] as double);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print(groupedTransactions);
@@ -34,7 +41,12 @@ class Chart extends StatelessWidget {
       child: Row(
         children: [
           for (var tx in groupedTransactions)
-            Text('${tx['day']} ${tx['amount']}')
+            Bar(
+                tx['day'] as String,
+                tx['amount'] as double,
+                maxSpending == 0.0
+                    ? 0.0
+                    : (tx['amount'] as double) / maxSpending)
         ],
       ),
     );
