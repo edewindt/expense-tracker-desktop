@@ -38,16 +38,23 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: [
-          for (var tx in groupedTransactions)
-            Bar(
-                tx['day'] as String,
-                tx['amount'] as double,
-                maxSpending == 0.0
-                    ? 0.0
-                    : (tx['amount'] as double) / maxSpending)
-        ],
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            for (var tx in groupedTransactions)
+              Flexible(
+                fit: FlexFit.tight,
+                child: Bar(
+                    tx['day'] as String,
+                    tx['amount'] as double,
+                    maxSpending == 0.0
+                        ? 0.0
+                        : (tx['amount'] as double) / maxSpending),
+              )
+          ],
+        ),
       ),
     );
   }
