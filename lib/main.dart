@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:personal_exp/new_transaction.dart';
 import 'package:personal_exp/transaction_list.dart';
 import './transactions.dart';
+import './chart.dart';
 
 void main() => runApp(const PersonalExpenses());
 
@@ -13,7 +14,10 @@ class PersonalExpenses extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
-      theme: ThemeData(primarySwatch: Colors.cyan, accentColor: Colors.amber),
+      theme: ThemeData(
+        primarySwatch: Colors.cyan,
+        accentColor: Colors.amber,
+      ),
       home: MyHomePage(),
     );
   }
@@ -27,14 +31,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 't1', amount: 69.99, date: DateTime.now(), title: 'New Shoes'),
-    Transaction(
-        id: 't2', amount: 499.99, date: DateTime.now(), title: 'New Computer'),
-    Transaction(
-        id: 't3', amount: 188669.99, date: DateTime.now(), title: 'New House')
-  ];
+  final List<Transaction> transactions = [];
+
+  List<Transaction> get _recentTransactions {
+    return transactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
   void addTransaction(String title, double amount) {
     final newTx = Transaction(
@@ -80,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            Chart(_recentTransactions),
             SizedBox(
               width: double.infinity,
               child: Card(
