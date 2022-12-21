@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transactions.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(const PersonalExpenses());
 
@@ -56,10 +57,9 @@ class MyHomePage extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(10))),
                         padding: EdgeInsets.all(20),
                         child: Text(
-                          transaction.amount.toString(),
+                          '\$${transaction.amount}',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                       Column(
@@ -69,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                             transaction.title,
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(transaction.date.toString())
+                          Text(DateFormat().format(transaction.date))
                         ],
                       )
                     ],
