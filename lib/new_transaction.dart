@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
-  NewTransaction(this.add, {super.key});
+  const NewTransaction(this.add, {super.key});
   final Function add;
 
   @override
@@ -62,7 +62,7 @@ class _NewTransactionState extends State<NewTransaction> {
                           date = newDate;
                         });
                       },
-                      child: Text('Choose Date'))
+                      child: const Text('Choose Date'))
                 ],
               ),
             ),

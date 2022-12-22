@@ -8,8 +8,8 @@ class TransactionList extends StatelessWidget {
   final Function deleteTx;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
+    return SizedBox(
+      height: 700,
       child: ListView.builder(
         itemBuilder: (ctx, i) {
           return Card(
@@ -20,12 +20,13 @@ class TransactionList extends StatelessWidget {
                   margin: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Theme.of(context).primaryColorDark,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
                   padding: const EdgeInsets.all(10),
                   child: Text(
                     '\$${transactions[i].amount.toStringAsFixed(2)}',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 17),
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
                   ),
                 ),
                 Column(
@@ -38,9 +39,10 @@ class TransactionList extends StatelessWidget {
                     Text(DateFormat().add_MMMEd().format(transactions[i].date))
                   ],
                 ),
+                Spacer(),
                 IconButton(
                     onPressed: () => deleteTx(transactions[i].id),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.delete,
                       color: Colors.red,
                     ))

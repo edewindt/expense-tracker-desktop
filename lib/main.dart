@@ -15,10 +15,10 @@ class PersonalExpenses extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        accentColor: Colors.amber,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+            .copyWith(secondary: Colors.amber),
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return transactions.where((tx) {
       return tx.date.isAfter(
         DateTime.now().subtract(
-          Duration(days: 7),
+          const Duration(days: 7),
         ),
       );
     }).toList();
@@ -66,8 +66,8 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(addTransaction),
           behavior: HitTestBehavior.opaque,
+          child: NewTransaction(addTransaction),
         );
       },
     );
@@ -87,14 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: [
           IconButton(
               onPressed: () => startNewTransaction(context),
-              icon: Icon(Icons.add))
+              icon: const Icon(Icons.add))
         ],
         title: const Text('Personal Expenses'),
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () => startNewTransaction(context),
       ),
       body: SingleChildScrollView(
